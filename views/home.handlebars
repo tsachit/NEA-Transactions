@@ -1,0 +1,59 @@
+<form class="needs-validation" novalidate action="/" method="post" enctype="application/x-www-form-urlencoded">
+  <div class="row g-3">
+
+    <legend>
+      <font color=#006699 size=4 face='Verdana, Arial, Helvetica, sans-serif'>Check NEA Bill <span>
+          <font color=#006699 size=3 face='Verdana, Arial, Helvetica, sans-serif'>(Pay Online / View Online )
+          </font>
+        </span>&nbsp;</font>
+    </legend>
+
+    <div class="col-12">
+      <label for="nea_location" class="form-label">NEA Location</label>
+      <input class="form-control" list="datalistOptions" name="nea_location" id="nea_location" placeholder="Type to search location" required="">
+      <datalist id="datalistOptions">
+        {{#each locations}}
+        <option value="{{this}}">
+        {{/each}}
+      </datalist>
+      <div class="invalid-feedback">
+        Please select a valid NEA Location.
+      </div>
+    </div>
+
+    <div class="col-12">
+      <label for="sc_no" class="form-label">SCNO <span class="text-muted">* (Input as in Online Bill)</span></label>
+      <input type="text" class="form-control" name="sc_no" id="sc_no" required="">
+      <div class="invalid-feedback">
+        Please enter your SC NO.
+      </div>
+    </div>
+
+    <div class="col-12">
+      <label for="consumer_id" class="form-label">Consumer ID</label>
+      <input type="text" class="form-control" name="consumer_id" id="consumer_id" required="">
+      <div class="invalid-feedback">
+        Please enter your Consumer ID
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label for="from_date" class="form-label">From Date</label>
+      <input type="date" min='1899-01-01' class="form-control" name="from_date" id="from_date" required="">
+      <div class="invalid-feedback">
+        From Date is required.
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label for="to_date" class="form-label">To Date</label>
+      <input type="date" min='1899-01-01' class="form-control" name="to_date" id="to_date" required="">
+      <div class="invalid-feedback">
+        To Date is required.
+      </div>
+    </div>
+  </div>
+
+  <hr class="my-4">
+  <button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
+</form>
