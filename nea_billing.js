@@ -16,19 +16,20 @@ const { openBrowser, goto, $, click, dropDown, textBox, into, write, clear, eval
         await write('7/7/2020', into(textBox({id: 'Fromdatepicker'})));
 
         await clear(textBox({id: 'Todatepicker'}));
-        await write('9/9/2020', into(textBox({id: 'Todatepicker'})));
+        await write('8/9/2020', into(textBox({id: 'Todatepicker'})));
 
         await click($("#btnSubmit"));
 
-        await evaluate(()=>{
-            const tableTD = document.getElementsByClassName('coltext')[0];
+        const htmlContent = await evaluate(()=>{
+            const table = document.getElementsByTagName('table')[1];
             // removes logo tr
-            if(tableTD.querySelectorAll('tbody>tr')[0].innerHTML.indexOf("logo") !== -1) {
-              tableTD.querySelectorAll('tbody>tr')[0].remove();
-            }
-            console.log(tableTD.innerHTML);
-            return tableTD.innerHTML;
-        })
+            table.querySelectorAll('tbody tr')[0].remove();
+            // removes transaction date tr
+            table.querySelectorAll('tbody tr')[0].remove();
+            table.classList.add('table', 'table-responsive');
+            return table.outerHTML;
+        });
+        console.log(htmlContent);
     } catch (error) {
         console.error(error);
     } finally {

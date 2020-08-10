@@ -54,17 +54,15 @@ app.post("/", function(req, res) {
 
       // Extract the results from the page
       const htmlContent = await evaluate(()=>{
-        const tableTD = document.getElementsByClassName('coltext')[0];
+        const table = document.getElementsByTagName('table')[1];
         // removes logo tr
-        if(tableTD.querySelectorAll('tbody>tr')[0].innerHTML.indexOf("logo") !== -1) {
-          tableTD.querySelectorAll('tbody>tr')[0].remove();
-        }
-        // for bootstrap
-        tableTD.querySelectorAll('table')[0].classList.add("table", "table-responsive");
-        return tableTD.innerHTML;
+        table.querySelectorAll('tbody tr')[0].remove();
+        // removes transaction date tr
+        table.querySelectorAll('tbody tr')[0].remove();
+        table.classList.add('table', 'table-responsive');
+        return table.outerHTML;
       });
-
-      res.render('table', {htmlContent});
+      res.render('table', {htmlContent, from_date, to_date});
       // res.send(htmlContent);
     } catch (error) {
       console.error(error);

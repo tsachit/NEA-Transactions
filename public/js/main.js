@@ -13,15 +13,10 @@
     function validateDatalist() {
       const locationName = nea_location.value;
       const existList = locationLists.querySelectorAll("option[value='" + locationName.toLocaleUpperCase() + "']");
-      console.log('locationName:', locationName, existList.length);
       if (existList != null && existList.length > 0) {
         nea_location.setCustomValidity('');
-        // nea_location.classList.add('is-valid');
-        // nea_location.classList.remove('is-invalid');
       } else {
-        nea_location.setCustomValidity("Please choose valid location only from the list")
-        // nea_location.classList.add('is-invalid');
-        // nea_location.classList.remove('is-valid');
+        nea_location.setCustomValidity("Please choose valid location only from the list");
       }
     }
 

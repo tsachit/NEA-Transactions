@@ -6,3 +6,7 @@ package-lock.json
 
 .idea
 .env
+
+public/table.html
+test.js
+test_nea_billing.js
